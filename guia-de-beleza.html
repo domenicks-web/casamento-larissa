@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cardápio de Beleza · Larissa & Guilherme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:wght@500;600;700&family=Alex+Brush&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #f5f1e6;
+    --cream-2: #efe9d8;
+    --olive: #57603f;
+    --olive-dark: #3d4530;
+    --gold: #a9884f;
+    --gold-light: #cfb87c;
+    --ink: #3a3a30;
+  }
+
+  * { box-sizing: border-box; }
+
+  body{
+    margin:0;
+    background: var(--cream);
+    background-image:
+      radial-gradient(circle at 8% 4%, rgba(169,136,79,0.10), transparent 40%),
+      radial-gradient(circle at 95% 96%, rgba(87,96,63,0.10), transparent 40%);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page{
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 28px 80px;
+    position: relative;
+  }
+
+  .frame{
+    border: 1px solid var(--gold-light);
+    padding: 3px;
+  }
+  .frame-inner{
+    border: 1px solid var(--gold-light);
+    padding: 48px 32px;
+  }
+
+  header{ text-align:center; margin-bottom: 42px; }
+
+  .eyebrow{
+    letter-spacing: 0.35em;
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    color: var(--olive);
+    margin-bottom: 6px;
+  }
+
+  h1{
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    font-size: 28px;
+    line-height: 1.3;
+    margin: 0 0 6px;
+    color: var(--olive-dark);
+  }
+
+  .subtitle{
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    font-size: 17px;
+    color: var(--gold);
+    text-transform: none;
+    margin-top: 2px;
+  }
+
+  .script{
+    font-family: 'Alex Brush', cursive;
+    font-size: 44px;
+    color: var(--olive-dark);
+    margin: 6px 0 2px;
+    line-height: 1.1;
+  }
+
+  .date{
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.3em;
+    font-size: 15px;
+    color: var(--gold);
+    margin-top: 10px;
+  }
+
+  .divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: 10px;
+    margin: 26px 0 30px;
+    color: var(--gold);
+  }
+  .divider::before, .divider::after{
+    content:"";
+    height:1px;
+    width: 60px;
+    background: var(--gold-light);
+  }
+  .divider svg{ width:18px; height:18px; opacity:0.8; }
+
+  .intro{
+    text-align:center;
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--ink);
+    max-width: 480px;
+    margin: 0 auto 36px;
+  }
+  .intro strong{ color: var(--olive-dark); font-weight: 600; }
+
+  .legend{
+    text-align:center;
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: var(--olive);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .card{
+    border-top: 1px solid var(--gold-light);
+    padding: 24px 4px 22px;
+  }
+  .card:last-of-type{ border-bottom: 1px solid var(--gold-light); }
+
+  .card-head{
+    display:flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+
+  .pro-name{
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 23px;
+    color: var(--olive-dark);
+    letter-spacing: 0.01em;
+  }
+  .pro-name .tag{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 15px;
+    color: var(--gold);
+    margin-left: 6px;
+  }
+
+  .from{
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding-top: 3px;
+  }
+
+  ul.items{
+    list-style:none;
+    margin: 0 0 16px;
+    padding: 0;
+  }
+  ul.items li{
+    display:flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 18px;
+    padding: 5px 0;
+  }
+  ul.items li .desc{ white-space: nowrap; }
+  ul.items li .leader{
+    flex: 1;
+    border-bottom: 1px dotted rgba(169,136,79,0.55);
+    transform: translateY(-4px);
+  }
+  ul.items li .price{
+    white-space: nowrap;
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: var(--olive-dark);
+  }
+  ul.items li .price.wait{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: #8a8065;
+  }
+
+  .actions{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .ig-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    border: 1px solid var(--olive);
+    color: var(--olive-dark) !important;
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 9px 18px;
+    border-radius: 2px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .ig-btn:hover{
+    background: var(--olive);
+    color: var(--cream) !important;
+  }
+  .ig-btn svg{ width:15px; height:15px; }
+
+  .tel-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    border: 1px solid var(--gold);
+    color: var(--gold) !important;
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 9px 18px;
+    border-radius: 2px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .tel-btn:hover{
+    background: var(--gold);
+    color: var(--cream) !important;
+  }
+  .tel-btn svg{ width:15px; height:15px; }
+
+  footer{
+    text-align:center;
+    margin-top: 40px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--olive);
+  }
+  footer .script{ font-size: 30px; margin-top: 4px; }
+
+  @media (max-width: 480px){
+    .frame-inner{ padding: 34px 18px; }
+    h1{ font-size: 30px; }
+    .script{ font-size: 34px; }
+    .card-head{ flex-direction: column; gap: 4px; }
+  }
+
+  .reveal{ opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.is-visible{ opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+
+  .back-link{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: block;
+    padding: 16px 20px;
+    background: rgba(245, 241, 230, .95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--gold-light);
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--olive);
+    text-decoration: none;
+  }
+  .back-link:hover{ color: var(--gold); }
+</style>
+</head>
+<body>
+<a class="back-link" href="index.html#beleza">&larr; Voltar para o site</a>
+<div class="page">
+  <div class="frame"><div class="frame-inner">
+
+    <header>
+      <div class="eyebrow">Para se sentir ainda mais linda</div>
+      <h1 style="color: var(--gold);">PARA MADRINHAS<br>E CONVIDADAS</h1>
+      <div class="subtitle">mais que especiais</div>
+      <div class="script">Larissa <span style="font-size:26px;">e</span> Guilherme</div>
+      <div class="date">07 · 08 · 2027</div>
+    </header>
+
+    <div class="divider">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 21s-7-4.5-9.5-9C.5 8 2 4 6 4c2.3 0 4 1.5 6 4 2-2.5 3.7-4 6-4 4 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
+    </div>
+
+    <p class="intro">Sei que muitas virão de outras cidades para celebrar esse dia tão especial com a gente e, pensando nisso, preparei esta seleção com algumas indicações de profissionais de beleza por aqui. São profissionais que conheço ou que tive boas referências. 💛<br><br>Mas quero que se sintam <strong>completamente à vontade</strong>: essa lista é apenas um carinho e uma sugestão. Podem fazer com outro profissional ou até mesmo se arrumar em casa.<br><br>O importante é que <strong>vocês se sintam lindas, confortáveis e, acima de tudo, vocês mesmas</strong> para aproveitar cada momento ao nosso lado. 🤍✨</p>
+
+    <!-- 1º Salão Unique Garden (externo) -->
+    <div class="card reveal">
+      <div class="card-head">
+        <div class="pro-name">Salão Unique <span class="tag">atendimento externo</span></div>
+        <div class="from">a partir de R$ 130</div>
+      </div>
+      <ul class="items">
+        <li><span class="desc">Make</span><span class="leader"></span><span class="price">R$ 325,00</span></li>
+        <li><span class="desc">Penteado semipreso</span><span class="leader"></span><span class="price">R$ 290,00</span></li>
+        <li><span class="desc">Escova babyliss</span><span class="leader"></span><span class="price">R$ 190,00</span></li>
+        <li><span class="desc">Escova</span><span class="leader"></span><span class="price">R$ 130,00</span></li>
+      </ul>
+      <div class="actions">
+        <a class="ig-btn" href="https://www.instagram.com/salaouniquegarden/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
+          Instagram
+        </a>
+        <a class="tel-btn" href="https://wa.me/5517991833997" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.5 3.5A10.5 10.5 0 0 0 3.6 16.8L2 22l5.4-1.5A10.5 10.5 0 1 0 20.5 3.5z"/><path d="M8.3 8.7c.2-.6.5-.6.8-.6h.6c.2 0 .4 0 .6.5s.7 1.7.7 1.8.1.2 0 .4-.2.3-.4.5-.4.4-.5.6-.2.3 0 .6c.2.3.8 1.2 1.7 2 1.2 1 2.1 1.3 2.4 1.5.3.2.5.1.6-.1s.6-.6.8-.9.4-.2.6-.1 1.5.7 1.8.8.4.2.5.3c0 .2 0 1-.4 1.5s-1.3.9-2.2.9c-2.4 0-4.9-1.6-6.2-2.9s-2.9-3.7-2.9-6.1c0-1 .4-1.9.9-2.3z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- 1º Salão Unique Garden (no salão) -->
+    <div class="card reveal">
+      <div class="card-head">
+        <div class="pro-name">Salão Unique <span class="tag">no salão</span></div>
+        <div class="from">a partir de R$ 99</div>
+      </div>
+      <ul class="items">
+        <li><span class="desc">Make avulsa</span><span class="leader"></span><span class="price">R$ 315,00</span></li>
+        <li><span class="desc">Penteado avulso</span><span class="leader"></span><span class="price">R$ 315,00</span></li>
+        <li><span class="desc">Penteado semipreso avulso</span><span class="leader"></span><span class="price">R$ 289,00</span></li>
+        <li><span class="desc">Escova babyliss avulso</span><span class="leader"></span><span class="price">R$ 199,00</span></li>
+        <li><span class="desc">Escova lisa</span><span class="leader"></span><span class="price">R$ 99,00 – R$ 119,00</span></li>
+      </ul>
+      <div class="actions">
+        <a class="ig-btn" href="https://www.instagram.com/salaouniquegarden/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
+          Instagram
+        </a>
+        <a class="tel-btn" href="https://wa.me/5517991833997" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.5 3.5A10.5 10.5 0 0 0 3.6 16.8L2 22l5.4-1.5A10.5 10.5 0 1 0 20.5 3.5z"/><path d="M8.3 8.7c.2-.6.5-.6.8-.6h.6c.2 0 .4 0 .6.5s.7 1.7.7 1.8.1.2 0 .4-.2.3-.4.5-.4.4-.5.6-.2.3 0 .6c.2.3.8 1.2 1.7 2 1.2 1 2.1 1.3 2.4 1.5.3.2.5.1.6-.1s.6-.6.8-.9.4-.2.6-.1 1.5.7 1.8.8.4.2.5.3c0 .2 0 1-.4 1.5s-1.3.9-2.2.9c-2.4 0-4.9-1.6-6.2-2.9s-2.9-3.7-2.9-6.1c0-1 .4-1.9.9-2.3z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- 2º Studio Vivi Versiani -->
+    <div class="card reveal">
+      <div class="card-head">
+        <div class="pro-name">Studio Vivi Versiani</div>
+        <div class="from">a partir de R$ 130</div>
+      </div>
+      <ul class="items">
+        <li><span class="desc">Make</span><span class="leader"></span><span class="price">R$ 300,00</span></li>
+        <li><span class="desc">Penteado</span><span class="leader"></span><span class="price">R$ 230,00</span></li>
+        <li><span class="desc">Escova babyliss (lavado em casa)</span><span class="leader"></span><span class="price">R$ 130,00</span></li>
+        <li><span class="desc">Escova babyliss (lavado no salão)</span><span class="leader"></span><span class="price">R$ 130,00</span></li>
+      </ul>
+      <div class="actions">
+        <a class="ig-btn" href="https://www.instagram.com/viviversianimakeup/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
+          Instagram
+        </a>
+        <a class="tel-btn" href="https://wa.me/5517981577825" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.5 3.5A10.5 10.5 0 0 0 3.6 16.8L2 22l5.4-1.5A10.5 10.5 0 1 0 20.5 3.5z"/><path d="M8.3 8.7c.2-.6.5-.6.8-.6h.6c.2 0 .4 0 .6.5s.7 1.7.7 1.8.1.2 0 .4-.2.3-.4.5-.4.4-.5.6-.2.3 0 .6c.2.3.8 1.2 1.7 2 1.2 1 2.1 1.3 2.4 1.5.3.2.5.1.6-.1s.6-.6.8-.9.4-.2.6-.1 1.5.7 1.8.8.4.2.5.3c0 .2 0 1-.4 1.5s-1.3.9-2.2.9c-2.4 0-4.9-1.6-6.2-2.9s-2.9-3.7-2.9-6.1c0-1 .4-1.9.9-2.3z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- 3º Spazio Sorella -->
+    <div class="card reveal">
+      <div class="card-head">
+        <div class="pro-name">Spazio Sorella</div>
+        <div class="from">R$ 300</div>
+      </div>
+      <ul class="items">
+        <li><span class="desc">Make</span><span class="leader"></span><span class="price">R$ 300,00</span></li>
+        <li><span class="desc">Penteado</span><span class="leader"></span><span class="price">R$ 300,00</span></li>
+      </ul>
+      <div class="actions">
+        <a class="ig-btn" href="https://www.instagram.com/spazio.sorella/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
+          Instagram
+        </a>
+        <a class="tel-btn" href="https://wa.me/5517991412918" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.5 3.5A10.5 10.5 0 0 0 3.6 16.8L2 22l5.4-1.5A10.5 10.5 0 1 0 20.5 3.5z"/><path d="M8.3 8.7c.2-.6.5-.6.8-.6h.6c.2 0 .4 0 .6.5s.7 1.7.7 1.8.1.2 0 .4-.2.3-.4.5-.4.4-.5.6-.2.3 0 .6c.2.3.8 1.2 1.7 2 1.2 1 2.1 1.3 2.4 1.5.3.2.5.1.6-.1s.6-.6.8-.9.4-.2.6-.1 1.5.7 1.8.8.4.2.5.3c0 .2 0 1-.4 1.5s-1.3.9-2.2.9c-2.4 0-4.9-1.6-6.2-2.9s-2.9-3.7-2.9-6.1c0-1 .4-1.9.9-2.3z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- 4º Julia Verro -->
+    <div class="card reveal">
+      <div class="card-head">
+        <div class="pro-name">Julia Verro <span class="tag">indicação Beatriz Karam</span></div>
+        <div class="from">a partir de R$ 540</div>
+      </div>
+      <ul class="items">
+        <li><span class="desc">Make e cabelo</span><span class="leader"></span><span class="price">R$ 540,00</span></li>
+      </ul>
+      <div class="actions">
+        <a class="ig-btn" href="https://www.instagram.com/makeupjuliaverro/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
+          Instagram
+        </a>
+        <a class="tel-btn" href="https://beacons.ai/makeupjuliaverro" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.5 3.5A10.5 10.5 0 0 0 3.6 16.8L2 22l5.4-1.5A10.5 10.5 0 1 0 20.5 3.5z"/></svg>
+          Contato
+        </a>
+      </div>
+    </div>
+
+    <!-- 5º Bia Maquiadora -->
+    <div class="card reveal">
+      <div class="card-head">
+        <div class="pro-name">Bia Maquiadora <span class="tag">indicação Beatriz Karam</span></div>
+        <div class="from">R$ 350</div>
+      </div>
+      <ul class="items">
+        <li><span class="desc">Make e cabelo</span><span class="leader"></span><span class="price">R$ 350,00</span></li>
+      </ul>
+      <div class="actions">
+        <a class="ig-btn" href="https://www.instagram.com/explore/search/keyword/?q=bia%20maquiadora" target="_blank" rel="noopener"><!-- aguardando link direto -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
+          Instagram
+        </a>
+        <a class="tel-btn" href="https://wa.me/5517991987710" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.5 3.5A10.5 10.5 0 0 0 3.6 16.8L2 22l5.4-1.5A10.5 10.5 0 1 0 20.5 3.5z"/><path d="M8.3 8.7c.2-.6.5-.6.8-.6h.6c.2 0 .4 0 .6.5s.7 1.7.7 1.8.1.2 0 .4-.2.3-.4.5-.4.4-.5.6-.2.3 0 .6c.2.3.8 1.2 1.7 2 1.2 1 2.1 1.3 2.4 1.5.3.2.5.1.6-.1s.6-.6.8-.9.4-.2.6-.1 1.5.7 1.8.8.4.2.5.3c0 .2 0 1-.4 1.5s-1.3.9-2.2.9c-2.4 0-4.9-1.6-6.2-2.9s-2.9-3.7-2.9-6.1c0-1 .4-1.9.9-2.3z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- 6º Danusa Maia -->
+    <div class="card reveal">
+      <div class="card-head">
+        <div class="pro-name">Danusa Maia <span class="tag">indicação Beatriz Karam</span></div>
+        <div class="from">a partir de R$ 260</div>
+      </div>
+      <ul class="items">
+        <li><span class="desc">Make e penteado</span><span class="leader"></span><span class="price">R$ 450,00</span></li>
+        <li><span class="desc">Make e escova com babyliss</span><span class="leader"></span><span class="price">R$ 350,00</span></li>
+        <li><span class="desc">Make</span><span class="leader"></span><span class="price">R$ 260,00</span></li>
+      </ul>
+      <div class="actions">
+        <a class="ig-btn" href="https://www.instagram.com/danusamaiamakeup/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
+          Instagram
+        </a>
+        <a class="tel-btn" href="https://wa.me/5517997192888" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.5 3.5A10.5 10.5 0 0 0 3.6 16.8L2 22l5.4-1.5A10.5 10.5 0 1 0 20.5 3.5z"/><path d="M8.3 8.7c.2-.6.5-.6.8-.6h.6c.2 0 .4 0 .6.5s.7 1.7.7 1.8.1.2 0 .4-.2.3-.4.5-.4.4-.5.6-.2.3 0 .6c.2.3.8 1.2 1.7 2 1.2 1 2.1 1.3 2.4 1.5.3.2.5.1.6-.1s.6-.6.8-.9.4-.2.6-.1 1.5.7 1.8.8.4.2.5.3c0 .2 0 1-.4 1.5s-1.3.9-2.2.9c-2.4 0-4.9-1.6-6.2-2.9s-2.9-3.7-2.9-6.1c0-1 .4-1.9.9-2.3z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- 7º Fabiana Cavassan -->
+    <div class="card reveal">
+      <div class="card-head">
+        <div class="pro-name">Fabiana Cavassan <span class="tag">indicação Beatriz Karam</span></div>
+        <div class="from">a partir de R$ 200</div>
+      </div>
+      <ul class="items">
+        <li><span class="desc">Make e penteado</span><span class="leader"></span><span class="price">R$ 590,00</span></li>
+        <li><span class="desc">Babyliss e make</span><span class="leader"></span><span class="price">R$ 530,00</span></li>
+        <li><span class="desc">Make com cílios</span><span class="leader"></span><span class="price">R$ 390,00</span></li>
+        <li><span class="desc">Penteado</span><span class="leader"></span><span class="price">R$ 200,00</span></li>
+      </ul>
+      <div class="actions">
+        <a class="ig-btn" href="https://www.instagram.com/fabianacavassan/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
+          Instagram
+        </a>
+        <a class="tel-btn" href="https://wa.me/5517997037590" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.5 3.5A10.5 10.5 0 0 0 3.6 16.8L2 22l5.4-1.5A10.5 10.5 0 1 0 20.5 3.5z"/><path d="M8.3 8.7c.2-.6.5-.6.8-.6h.6c.2 0 .4 0 .6.5s.7 1.7.7 1.8.1.2 0 .4-.2.3-.4.5-.4.4-.5.6-.2.3 0 .6c.2.3.8 1.2 1.7 2 1.2 1 2.1 1.3 2.4 1.5.3.2.5.1.6-.1s.6-.6.8-.9.4-.2.6-.1 1.5.7 1.8.8.4.2.5.3c0 .2 0 1-.4 1.5s-1.3.9-2.2.9c-2.4 0-4.9-1.6-6.2-2.9s-2.9-3.7-2.9-6.1c0-1 .4-1.9.9-2.3z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- 8º Fabulous Atelie / Rogério Zanatta -->
+    <div class="card reveal">
+      <div class="card-head">
+        <div class="pro-name">Fabulous Atelie <span class="tag">Rogério Zanatta</span></div>
+        <div class="from">a partir de R$ 90</div>
+      </div>
+      <ul class="items">
+        <li><span class="desc">Make e cabelo</span><span class="leader"></span><span class="price">R$ 450,00</span></li>
+        <li><span class="desc">Make e cabelo (grupo +10 pessoas)</span><span class="leader"></span><span class="price">R$ 380,00</span></li>
+        <li><span class="desc">Penteado</span><span class="leader"></span><span class="price">R$ 300,00</span></li>
+        <li><span class="desc">Make</span><span class="leader"></span><span class="price">R$ 200,00</span></li>
+        <li><span class="desc">Escova</span><span class="leader"></span><span class="price">R$ 90,00</span></li>
+        <li><span class="desc">Escova babyliss</span><span class="leader"></span><span class="price">R$ 90,00</span></li>
+      </ul>
+      <div class="actions">
+        <a class="ig-btn" href="https://www.instagram.com/fabulousatelie/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
+          Instagram
+        </a>
+        <a class="tel-btn" href="https://wa.me/5517996503108" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.5 3.5A10.5 10.5 0 0 0 3.6 16.8L2 22l5.4-1.5A10.5 10.5 0 1 0 20.5 3.5z"/><path d="M8.3 8.7c.2-.6.5-.6.8-.6h.6c.2 0 .4 0 .6.5s.7 1.7.7 1.8.1.2 0 .4-.2.3-.4.5-.4.4-.5.6-.2.3 0 .6c.2.3.8 1.2 1.7 2 1.2 1 2.1 1.3 2.4 1.5.3.2.5.1.6-.1s.6-.6.8-.9.4-.2.6-.1 1.5.7 1.8.8.4.2.5.3c0 .2 0 1-.4 1.5s-1.3.9-2.2.9c-2.4 0-4.9-1.6-6.2-2.9s-2.9-3.7-2.9-6.1c0-1 .4-1.9.9-2.3z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- 9º Fernanda Garcia -->
+    <div class="card reveal">
+      <div class="card-head">
+        <div class="pro-name">Fernanda Garcia <span class="tag">indicação Beatriz Karam</span></div>
+        <div class="from">a partir de R$ 300</div>
+      </div>
+      <ul class="items">
+        <li><span class="desc">Make e cabelo</span><span class="leader"></span><span class="price">R$ 390,00</span></li>
+        <li><span class="desc">Make e cabelo</span><span class="leader"></span><span class="price">R$ 300,00</span></li>
+      </ul>
+      <div class="actions">
+        <a class="ig-btn" href="https://www.instagram.com/fgarcia_makehair/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
+          Instagram
+        </a>
+        <a class="tel-btn" href="https://wa.me/5517981458745" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.5 3.5A10.5 10.5 0 0 0 3.6 16.8L2 22l5.4-1.5A10.5 10.5 0 1 0 20.5 3.5z"/><path d="M8.3 8.7c.2-.6.5-.6.8-.6h.6c.2 0 .4 0 .6.5s.7 1.7.7 1.8.1.2 0 .4-.2.3-.4.5-.4.4-.5.6-.2.3 0 .6c.2.3.8 1.2 1.7 2 1.2 1 2.1 1.3 2.4 1.5.3.2.5.1.6-.1s.6-.6.8-.9.4-.2.6-.1 1.5.7 1.8.8.4.2.5.3c0 .2 0 1-.4 1.5s-1.3.9-2.2.9c-2.4 0-4.9-1.6-6.2-2.9s-2.9-3.7-2.9-6.1c0-1 .4-1.9.9-2.3z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- 10º Priscila Larsen Salon -->
+    <div class="card reveal">
+      <div class="card-head">
+        <div class="pro-name">Priscila Larsen Salon</div>
+      </div>
+      <ul class="items">
+        <li><span class="desc">Valores</span><span class="leader"></span><span class="price wait">Aguardando retorno</span></li>
+      </ul>
+      <div class="actions">
+        <a class="ig-btn" href="https://www.instagram.com/priscilalarsensalon/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
+          Instagram
+        </a>
+        <a class="tel-btn" href="https://wa.me/5517981402212" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.5 3.5A10.5 10.5 0 0 0 3.6 16.8L2 22l5.4-1.5A10.5 10.5 0 1 0 20.5 3.5z"/><path d="M8.3 8.7c.2-.6.5-.6.8-.6h.6c.2 0 .4 0 .6.5s.7 1.7.7 1.8.1.2 0 .4-.2.3-.4.5-.4.4-.5.6-.2.3 0 .6c.2.3.8 1.2 1.7 2 1.2 1 2.1 1.3 2.4 1.5.3.2.5.1.6-.1s.6-.6.8-.9.4-.2.6-.1 1.5.7 1.8.8.4.2.5.3c0 .2 0 1-.4 1.5s-1.3.9-2.2.9c-2.4 0-4.9-1.6-6.2-2.9s-2.9-3.7-2.9-6.1c0-1 .4-1.9.9-2.3z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- 11º Rafa Romanzini -->
+    <div class="card reveal">
+      <div class="card-head">
+        <div class="pro-name">Rafa Romanzini <span class="tag">indicação Beatriz Karam</span></div>
+        <div class="from">R$ 400</div>
+      </div>
+      <ul class="items">
+        <li><span class="desc">Make e penteado</span><span class="leader"></span><span class="price">R$ 400,00</span></li>
+      </ul>
+      <div class="actions">
+        <a class="ig-btn" href="https://www.instagram.com/rafa_makeup_hair/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
+          Instagram
+        </a>
+        <a class="tel-btn" href="https://wa.me/5517991412918" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.5 3.5A10.5 10.5 0 0 0 3.6 16.8L2 22l5.4-1.5A10.5 10.5 0 1 0 20.5 3.5z"/><path d="M8.3 8.7c.2-.6.5-.6.8-.6h.6c.2 0 .4 0 .6.5s.7 1.7.7 1.8.1.2 0 .4-.2.3-.4.5-.4.4-.5.6-.2.3 0 .6c.2.3.8 1.2 1.7 2 1.2 1 2.1 1.3 2.4 1.5.3.2.5.1.6-.1s.6-.6.8-.9.4-.2.6-.1 1.5.7 1.8.8.4.2.5.3c0 .2 0 1-.4 1.5s-1.3.9-2.2.9c-2.4 0-4.9-1.6-6.2-2.9s-2.9-3.7-2.9-6.1c0-1 .4-1.9.9-2.3z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <p style="text-align:center; font-size:14px; font-style:italic; color:var(--olive); margin-top:32px;">*Valores referentes a setembro de 2026, sujeitos a reajuste.</p>
+
+    <footer>
+      Com carinho,
+      <div class="script">Larissa.</div>
+    </footer>
+
+  </div></div>
+</div>
+<script>
+  (function () {
+    var alvos = document.querySelectorAll('.reveal');
+    if (!alvos.length) return;
+    if (!('IntersectionObserver' in window)) {
+      alvos.forEach(function (el) { el.classList.add('is-visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entradas, obs) {
+      entradas.forEach(function (entrada) {
+        if (entrada.isIntersecting) {
+          entrada.target.classList.add('is-visible');
+          obs.unobserve(entrada.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+    alvos.forEach(function (el) { io.observe(el); });
+  })();
+</script>
+</body>
+</html>
