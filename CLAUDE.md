@@ -193,11 +193,10 @@ de "mural ainda não configurado" em vez de quebrar.
 ## Pendências
 
 - [ ] Confirmar a data: o Save the Date diz 07/08/2027, confirmar com a noiva.
-- [ ] Segundo bloco de "Nossa história" ainda é placeholder (o primeiro já foi
-      preenchido, mas por coincidência com o texto do pedido — o texto que
-      faltava contar, "como tudo começou" antes do Chá Bar, ainda não veio).
+- [x] Segundo bloco de "Nossa história" ("como tudo começou" antes do Chá Bar)
+      preenchido (13/09) com o texto final da Larissa/Gui, na seção `#onde`.
 - [ ] Endereço da cerimônia → ainda "Local a confirmar" (o da recepção, no
-      Fauze Karam Buffett, já está preenchido com mapa e botão "Como chegar").
+      Fauze Karam Buffet, já está preenchido com mapa e botão "Como chegar").
 - [ ] Lista de presentes: Larissa avisou (12/09) que só vai definir mais pra
       frente.
 - [x] Configurar o projeto Firebase do Mural de mensagens (projeto
