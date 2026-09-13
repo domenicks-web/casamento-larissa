@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia de Hospedagem · Larissa & Guilherme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:wght@500;600;700&family=Alex+Brush&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #f5f1e6;
+    --cream-2: #efe9d8;
+    --olive: #57603f;
+    --olive-dark: #3d4530;
+    --gold: #a9884f;
+    --gold-light: #cfb87c;
+    --ink: #3a3a30;
+  }
+
+  * { box-sizing: border-box; }
+
+  body{
+    margin:0;
+    background: var(--cream);
+    background-image:
+      radial-gradient(circle at 8% 4%, rgba(169,136,79,0.10), transparent 40%),
+      radial-gradient(circle at 95% 96%, rgba(87,96,63,0.10), transparent 40%);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page{
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 28px 80px;
+    position: relative;
+  }
+
+  .frame{
+    border: 1px solid var(--gold-light);
+    padding: 3px;
+  }
+  .frame-inner{
+    border: 1px solid var(--gold-light);
+    padding: 48px 32px;
+  }
+
+  header{ text-align:center; margin-bottom: 42px; }
+
+  .eyebrow{
+    letter-spacing: 0.35em;
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    color: var(--olive);
+    margin-bottom: 6px;
+  }
+
+  h1{
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    font-size: 28px;
+    line-height: 1.3;
+    margin: 0 0 6px;
+    color: var(--olive-dark);
+  }
+
+  .subtitle{
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    font-size: 17px;
+    color: var(--gold);
+    text-transform: none;
+    margin-top: 2px;
+  }
+
+  .script{
+    font-family: 'Alex Brush', cursive;
+    font-size: 44px;
+    color: var(--olive-dark);
+    margin: 6px 0 2px;
+    line-height: 1.1;
+  }
+
+  .date{
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.3em;
+    font-size: 15px;
+    color: var(--gold);
+    margin-top: 10px;
+  }
+
+  .divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: 10px;
+    margin: 26px 0 30px;
+    color: var(--gold);
+  }
+  .divider::before, .divider::after{
+    content:"";
+    height:1px;
+    width: 60px;
+    background: var(--gold-light);
+  }
+  .divider svg{ width:18px; height:18px; opacity:0.8; }
+
+  .intro{
+    text-align:center;
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--ink);
+    max-width: 480px;
+    margin: 0 auto 36px;
+  }
+  .intro strong{ color: var(--olive-dark); font-weight: 600; }
+
+  .card{
+    border-top: 1px solid var(--gold-light);
+    padding: 24px 4px 22px;
+  }
+  .card:last-of-type{ border-bottom: 1px solid var(--gold-light); }
+
+  .card-head{
+    display:flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+
+  .pro-name{
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 23px;
+    color: var(--olive-dark);
+    letter-spacing: 0.01em;
+  }
+  .pro-name .tag{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 15px;
+    color: var(--gold);
+    margin-left: 6px;
+  }
+
+  .from{
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding-top: 3px;
+  }
+
+  .endereco{
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0 0 6px;
+  }
+
+  .telefone{
+    font-size: 17px;
+    color: var(--olive);
+    margin: 0 0 16px;
+  }
+
+  .actions{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .ig-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    border: 1px solid var(--olive);
+    color: var(--olive-dark) !important;
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 9px 18px;
+    border-radius: 2px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .ig-btn:hover{
+    background: var(--olive);
+    color: var(--cream) !important;
+  }
+  .ig-btn svg{ width:15px; height:15px; }
+
+  .tel-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    border: 1px solid var(--gold);
+    color: var(--gold) !important;
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 9px 18px;
+    border-radius: 2px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .tel-btn:hover{
+    background: var(--gold);
+    color: var(--cream) !important;
+  }
+  .tel-btn svg{ width:15px; height:15px; }
+
+  footer{
+    text-align:center;
+    margin-top: 40px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--olive);
+  }
+  footer .script{ font-size: 30px; margin-top: 4px; }
+
+  @media (max-width: 480px){
+    .frame-inner{ padding: 34px 18px; }
+    h1{ font-size: 30px; }
+    .script{ font-size: 34px; }
+    .card-head{ flex-direction: column; gap: 4px; }
+  }
+
+  .reveal{ opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.is-visible{ opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+
+  .back-link{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: block;
+    padding: 16px 20px;
+    background: rgba(245, 241, 230, .95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--gold-light);
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--olive);
+    text-decoration: none;
+  }
+  .back-link:hover{ color: var(--gold); }
+</style>
+</head>
+<body>
+<a class="back-link" href="index.html#onde">&larr; Voltar para o site</a>
+<div class="page">
+  <div class="frame"><div class="frame-inner">
+
+    <header>
+      <div class="eyebrow">Para quem vem de outra cidade</div>
+      <h1 style="color: var(--gold);">GUIA DE<br>HOSPEDAGEM</h1>
+      <div class="subtitle">indicações da noiva</div>
+      <div class="script">Larissa <span style="font-size:26px;">e</span> Guilherme</div>
+      <div class="date">07 · 08 · 2027</div>
+    </header>
+
+    <div class="divider">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 21s-7-4.5-9.5-9C.5 8 2 4 6 4c2.3 0 4 1.5 6 4 2-2.5 3.7-4 6-4 4 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
+    </div>
+
+    <p class="intro">Para quem vai se hospedar em Rio Preto para o nosso casamento, separei algumas opções de
+      hotéis na cidade. 💛<br><br>O <strong>Hotel Nacional</strong> é o mais próximo do Fauze Karam Buffett, onde
+      será a recepção — por isso fica em primeiro lugar aqui embaixo.</p>
+
+    <!-- 1º Hotel Nacional de Rio Preto Distributed by Intercity -->
+    <div class="card reveal">
+      <div class="card-head">
+        <div class="pro-name">Hotel Nacional de Rio Preto <span class="tag">Distributed by Intercity</span></div>
+      </div>
+      <p class="endereco">R. Prof. Carlos Ibanez, 35 - Vila Diniz, São José do Rio Preto - SP, 15070-655</p>
+      <p class="telefone">(17) 2136-7400</p>
+      <div class="actions">
+        <a class="ig-btn" href="https://www.booking.com/hotel/br/nacional-plaza-inn.pt-br.html" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 4h6v6M20 4l-9 9M9 5H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-3"/></svg>
+          Reservas
+        </a>
+        <a class="ig-btn" href="https://www.intercityhoteis.com.br/hotel-sao-jose-do-rio-preto/hotel-nacional-distributed-by-intercity" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 4h6v6M20 4l-9 9M9 5H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-3"/></svg>
+          Site
+        </a>
+        <a class="tel-btn" href="tel:+551721367400">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.3 1L6.6 10.8z"/></svg>
+          Ligar
+        </a>
+      </div>
+    </div>
+
+    <!-- 2º Sakr Hotel Rio Preto -->
+    <div class="card reveal">
+      <div class="card-head">
+        <div class="pro-name">Sakr Hotel Rio Preto</div>
+      </div>
+      <p class="endereco">Av. Luiz da Cruz Martins, 801 - Jardim Alto Alegre, São José do Rio Preto - SP, 15054-470</p>
+      <p class="telefone">(17) 3202-4200</p>
+      <div class="actions">
+        <a class="ig-btn" href="https://www.booking.com/hotel/br/sakr.pt-br.html" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 4h6v6M20 4l-9 9M9 5H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-3"/></svg>
+          Reservas
+        </a>
+        <a class="tel-btn" href="tel:+551732024200">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.3 1L6.6 10.8z"/></svg>
+          Ligar
+        </a>
+      </div>
+    </div>
+
+    <!-- 3º Hotel Cassino Tower São José do Rio Preto -->
+    <div class="card reveal">
+      <div class="card-head">
+        <div class="pro-name">Hotel Cassino Tower São José do Rio Preto</div>
+      </div>
+      <p class="endereco">R. Voluntários de São Paulo, 3367 - Centro, São José do Rio Preto - SP, 15015-200</p>
+      <p class="telefone">(17) 2138-8788</p>
+      <div class="actions">
+        <a class="ig-btn" href="https://www.booking.com/hotel/br/arts.pt-br.html" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 4h6v6M20 4l-9 9M9 5H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-3"/></svg>
+          Reservas
+        </a>
+        <a class="tel-btn" href="tel:+551721388788">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.3 1L6.6 10.8z"/></svg>
+          Ligar
+        </a>
+      </div>
+    </div>
+
+    <!-- 4º Hotel Saint Paul -->
+    <div class="card reveal">
+      <div class="card-head">
+        <div class="pro-name">Hotel Saint Paul</div>
+      </div>
+      <p class="endereco">Av. José Munia, 5200 - Nova Redentora, São José do Rio Preto - SP, 15090-045</p>
+      <p class="telefone">(17) 3216-9000</p>
+      <div class="actions">
+        <a class="ig-btn" href="https://www.booking.com/hotel/br/quality-saint-paul.pt-br.html" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 4h6v6M20 4l-9 9M9 5H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-3"/></svg>
+          Reservas
+        </a>
+        <a class="tel-btn" href="tel:+551732169000">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.3 1L6.6 10.8z"/></svg>
+          Ligar
+        </a>
+      </div>
+    </div>
+
+    <!-- 5º Hotel Ipê Center -->
+    <div class="card reveal">
+      <div class="card-head">
+        <div class="pro-name">Hotel Ipê Center</div>
+      </div>
+      <p class="endereco">Av. Francisco das C. Oliveira, 117 - Jardim Pinheiros, São José do Rio Preto - SP, 15091-330</p>
+      <p class="telefone">(17) 3303-4545</p>
+      <div class="actions">
+        <a class="ig-btn" href="https://www.booking.com/hotel/br/ipe-center-hotel.pt-br.html" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 4h6v6M20 4l-9 9M9 5H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-3"/></svg>
+          Reservas
+        </a>
+        <a class="tel-btn" href="tel:+551733034545">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.3 1L6.6 10.8z"/></svg>
+          Ligar
+        </a>
+      </div>
+    </div>
+
+    <!-- 6º Hotel Hyatt Place -->
+    <div class="card reveal">
+      <div class="card-head">
+        <div class="pro-name">Hotel Hyatt Place</div>
+      </div>
+      <p class="endereco">Av. Juscelino Kubitschek de Oliveira, 5000 - C - Bairro Iguatemi, São José do Rio Preto - SP, 15093-340</p>
+      <p class="telefone">(17) 3228-1234</p>
+      <div class="actions">
+        <a class="ig-btn" href="https://www.booking.com/hotel/br/hyatt-place-sao-jose-do-rio-preto.pt-br.html" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 4h6v6M20 4l-9 9M9 5H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-3"/></svg>
+          Reservas
+        </a>
+        <a class="tel-btn" href="tel:+551732281234">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.3 1L6.6 10.8z"/></svg>
+          Ligar
+        </a>
+      </div>
+    </div>
+
+    <footer>
+      Com carinho,
+      <div class="script">Larissa.</div>
+    </footer>
+
+  </div></div>
+</div>
+<script>
+  (function () {
+    var alvos = document.querySelectorAll('.reveal');
+    if (!alvos.length) return;
+    if (!('IntersectionObserver' in window)) {
+      alvos.forEach(function (el) { el.classList.add('is-visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entradas, obs) {
+      entradas.forEach(function (entrada) {
+        if (entrada.isIntersecting) {
+          entrada.target.classList.add('is-visible');
+          obs.unobserve(entrada.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+    alvos.forEach(function (el) { io.observe(el); });
+  })();
+</script>
+</body>
+</html>

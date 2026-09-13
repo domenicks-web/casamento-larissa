@@ -437,6 +437,78 @@
       color: var(--cream);
     }
 
+    /* mural de mensagens */
+    .mural-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 34px;
+      width: 100%;
+    }
+
+    .mural-form input[type="text"],
+    .mural-form textarea {
+      font-family: var(--serif);
+      font-size: 20px;
+      color: var(--ink);
+      background: var(--white);
+      border: 1px solid var(--gold-light);
+      padding: 12px 14px;
+      resize: vertical;
+      width: 100%;
+    }
+
+    .mural-form input[type="text"]:focus,
+    .mural-form textarea:focus {
+      outline: 2px solid var(--gold);
+      outline-offset: 1px;
+    }
+
+    .mural-honeypot {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .mural-status {
+      font-size: 16px;
+      color: var(--olive);
+      min-height: 22px;
+    }
+
+    .mural-item {
+      border-top: 1px solid var(--gold-light);
+      padding: 16px 0;
+    }
+
+    .mural-item:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .mural-nome {
+      font-family: var(--display);
+      font-size: 13px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .mural-texto {
+      font-size: 19px;
+      line-height: 1.5;
+      color: var(--ink);
+    }
+
+    .mural-vazio {
+      font-size: 18px;
+      font-style: italic;
+      color: var(--olive);
+    }
+
     footer {
       padding: 46px 26px 56px;
       background: var(--olive);
@@ -465,6 +537,7 @@
       justify-content: center;
       gap: 6px;
       margin-top: 26px;
+      margin-bottom: 26px;
       font-family: var(--serif);
       font-style: italic;
       font-size: 13px;
@@ -524,6 +597,7 @@
       <a href="#galeria">Fotos</a>
       <a href="#beleza">Beleza</a>
       <a href="#presentes">Presentes</a>
+      <a href="#mural">Mural</a>
     </nav>
 
     <section id="quando" class="tinted reveal">
@@ -542,8 +616,16 @@
       <div class="rule"></div>
       <div class="chapter reveal">
         <img src="fotos/flores.jpg" alt="Guilherme com um buquê de rosas" />
-        <p>Este espaço é para vocês contarem como tudo começou. Duas ou três frases já bastam: o primeiro encontro, a
-          primeira viagem, o dia em que ficou claro que era para sempre.</p>
+        <p><strong>Dois dias, um namoro ❤️</strong></p>
+        <p>Você sabia que temos dois dias oficiais para comemorar nosso aniversário de namoro? 😂</p>
+        <p>Tudo começou em 7 de setembro de 2018 (feriado e sexta-feira), durante o Chá Bar dos primos do Gui, Thel
+          e Laís. Inspirado pelo clima de casamento, o Gui resolveu fazer o primeiro pedido.</p>
+        <p>E eu respondi: “Não! Quero que seja mais especial.”</p>
+        <p>Essa noiva já começou exigente! 😂</p>
+        <p>No dia seguinte, 8 de setembro (sábado), veio o pedido oficial durante o evento Wanna Rock, que acontecia
+          no Shopping Iguatemi, ao som de Biquini Cavadão, com chopp artesanal e muita alegria.</p>
+        <p>E foi assim que ganhamos duas datas para comemorar o início da nossa história. ❤️</p>
+        <p>07 e 08 de setembro: duas datas, um só amor.</p>
       </div>
       <div class="chapter reveal">
         <img src="fotos/barco.jpg" alt="Larissa e Guilherme na praia" />
@@ -554,6 +636,47 @@
     <section id="onde" class="tinted reveal">
       <h2>O dia</h2>
       <div class="rule"></div>
+      <p>Tudo começou em uma noite de domingo, no dia 13 de maio de 2018. Lembro como se fosse ontem.</p>
+      <p>Mal sabia que aquela noite mudaria o resto da minha vida.</p>
+      <p>Era aniversário de uma das minhas melhores amigas, a Layra, e estávamos comemorando no Vila Dionísio, um
+        pub de rock aqui da cidade, ao som de uma banda cover de Dead Fish. Eu nem gostava de Dead Fish, rsrs, mas
+        como era aniversário de amiga, lá estava eu.</p>
+      <p>Naquela noite, estávamos entre alguns casais e eu, solteira, muito bem acompanhada pelo meu próprio
+        chopp. 😂</p>
+      <p>Eu estava toda de preto, de salto alto, maquiada e trabalhada na elegância rock'n'roll. Depois de um
+        tempo em pé, já cansada, peguei um banquinho e me sentei um pouco mais afastada das amigas.</p>
+      <p>Caneca de chopp na mão, fiquei ali tranquila, observando o movimento do pub e assistindo ao show.</p>
+      <p>Até que meu melhor amigo, Tavares, percebeu uma coisa que eu ainda não tinha notado:</p>
+      <p>— Aquele moço ali de preto, barbudo, não para de te olhar.</p>
+      <p>— Quem?</p>
+      <p>— Ali, olha! Aquele moço ali.</p>
+      <p>Dei de ombros e continuei tranquilamente sentada, tomando meu chopp na paz do Senhor. 😂</p>
+      <p>Até que o tal moço resolveu vir falar comigo.</p>
+      <p>Ele chegou e perguntou:</p>
+      <p>— Oi, moça. Você está bebendo aí sozinha? Não quer beber ali com a gente?</p>
+      <p>E eu, sem imaginar o que estava prestes a acontecer, simplesmente respondi:</p>
+      <p>— Tá.</p>
+      <p>E foi assim.</p>
+      <p>Sem grandes planos, sem imaginar que aquela noite seria especial, nós nos conhecemos.</p>
+      <p>Começamos a conversar… e a conversar… e a conversar.</p>
+      <p>Em poucos minutos, parecia que já nos conhecíamos há muito tempo. Eram tantas coisas em comum, tantas
+        histórias, tantas risadas e tantos assuntos que o amigo que o acompanhava, o Neto, simplesmente foi
+        embora — provavelmente porque já tinha percebido que tinha perdido o companheiro da noite. 😂</p>
+      <p>O tempo passou sem que a gente percebesse.</p>
+      <p>Já no final da noite, depois de pagar a conta ele se deu conta de que tinha esquecido um pequeno
+        detalhe. Voltou, me deu um beijo, trocamos contatos… e o resto, como dizem, virou história.</p>
+      <p>Mas não foi qualquer história.</p>
+      <p>Desde aquela noite, nunca nos faltaram assuntos. Nunca nos cansamos da companhia um do outro. Nunca
+        precisamos de grandes planos para aproveitar o simples fato de estarmos juntos.</p>
+      <p>Com o tempo, descobrimos que, além de amantes, somos também melhores amigos. Que podemos rir juntos das
+        coisas mais bobas, dividir nossos sonhos, enfrentar os dias difíceis e comemorar cada pequena vitória.</p>
+      <p>Descobrimos que somos porto seguro um do outro.</p>
+      <p>E, agora, depois de 8 anos daquela noite de domingo, olhando para tudo o que vivemos, fica fácil
+        perceber que aquele encontro que aparentemente era por acaso, foi, na verdade, o começo de um plano muito
+        maior: um plano de Deus em nossas vidas.</p>
+      <p>E hoje estamos aqui, cercados pelas pessoas que amamos, prontos para começar um novo capítulo — dessa
+        vez, para sempre.</p>
+      <p>Com amor,<br>Larissa.</p>
       <div class="info">
         <div>
           <div class="label">Cerimônia</div>
@@ -562,13 +685,26 @@
         </div>
         <div>
           <div class="label">Recepção</div>
-          <div class="venue">Local a confirmar</div>
-          <div class="venue-sub">São José do Rio Preto, SP</div>
+          <div class="venue">Fauze Karam Buffett</div>
+          <div class="venue-sub">Av. Tarraf, 2530 - Jardim Primavera, São José do Rio Preto - SP,
+            15061-460</div>
         </div>
       </div>
+      <iframe
+        src="https://www.google.com/maps?q=Av.+Tarraf,+2530+-+Jardim+Primavera,+S%C3%A3o+Jos%C3%A9+do+Rio+Preto+-+SP,+15061-460&output=embed"
+        loading="lazy" style="border:0;width:100%;height:220px;margin-top:26px;display:block;" allowfullscreen
+        title="Mapa até o Fauze Karam Buffett"></iframe>
+      <a class="btn" style="margin-top:14px;"
+        href="https://www.google.com/maps/dir/?api=1&destination=Av.+Tarraf,+2530+-+Jardim+Primavera,+S%C3%A3o+Jos%C3%A9+do+Rio+Preto+-+SP,+15061-460"
+        target="_blank" rel="noopener">Como chegar</a>
       <div class="pending">
-        <code>mapa e botão “como chegar”</code>
+        <code>mapa e botão “como chegar” da cerimônia</code>
         <em>entram quando o endereço estiver fechado</em>
+      </div>
+      <div style="margin-top:36px;">
+        <div class="label">Hospedagem</div>
+        <p style="margin:10px 0 22px;">Indicações de hotéis em Rio Preto para quem vem de fora.</p>
+        <a class="btn" href="guia-de-hospedagem.html">Ver guia de hotéis</a>
       </div>
     </section>
 
@@ -587,16 +723,31 @@
     <section id="beleza" class="tinted reveal">
       <h2>Guia de beleza</h2>
       <div class="rule"></div>
-      <p style="margin-bottom:26px;">Salões e profissionais de Rio Preto, com valores de make, penteado e escova, para
-        madrinhas e convidadas se organizarem com calma.</p>
-      <a class="btn" href="guia-de-beleza.html">Ver o guia completo</a>
+      <p style="margin-bottom:26px;">Dicas da noiva para nossas convidadas especiais.</p>
+      <a class="btn" href="guia-de-beleza.html">Ver o Guia Completo</a>
     </section>
 
-    <section id="presentes" class="reveal" style="padding-bottom:72px;">
+    <section id="presentes" class="reveal">
       <h2>Presentes</h2>
       <div class="rule"></div>
       <p>A presença de vocês já é o maior presente. Em breve deixamos aqui as informações para quem quiser presentear.
       </p>
+    </section>
+
+    <section id="mural" class="tinted reveal" style="padding-bottom:72px;">
+      <h2>Mural de mensagens</h2>
+      <div class="rule"></div>
+      <p style="margin-bottom:26px;">Deixe um recadinho para a gente — um conselho, uma lembrança ou só um
+        "parabéns" já enche o coração. 💛</p>
+      <form id="mural-form" class="mural-form">
+        <input type="text" name="nome" placeholder="Seu nome" maxlength="60" required>
+        <textarea name="mensagem" placeholder="Sua mensagem para Larissa e Guilherme" maxlength="500" rows="3"
+          required></textarea>
+        <input type="text" name="site" class="mural-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit" class="btn" style="border:0;cursor:pointer;">Enviar mensagem</button>
+        <div id="mural-status" class="mural-status" aria-live="polite"></div>
+      </form>
+      <div id="mural-lista" class="mural-lista"></div>
     </section>
 
     <footer class="reveal">
@@ -604,7 +755,8 @@
       <div class="meta">07.08.2027 · São José do Rio Preto</div>
       <div class="credit">
         Feito com muito
-        <svg viewBox="0 0 24 24"><path
+        <svg viewBox="0 0 24 24">
+          <path
             d="M12 21s-7-4.5-9.5-9C.5 8 2 4 6 4c2.3 0 4 1.5 6 4 2-2.5 3.7-4 6-4 4 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z" />
         </svg>
         por <a href="https://domenicks.com.br" target="_blank" rel="noopener">Domenicks</a>
@@ -697,6 +849,96 @@
       });
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') fechar();
+      });
+    })();
+  </script>
+
+  <!--
+    Mural de mensagens: usa o Firestore (Firebase) como banco de dados gratuito,
+    só client-side, sem servidor pra manter. Antes de publicar:
+    1. Crie um projeto grátis em https://console.firebase.google.com
+    2. Ative o Firestore (modo produção) e cole as regras de segurança do
+       arquivo CLAUDE.md na aba Firestore > Regras.
+    3. Em Configurações do projeto > Seus apps > SDK, copie o firebaseConfig
+       e cole no lugar do objeto abaixo.
+  -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+    import {
+      getFirestore, collection, addDoc, serverTimestamp, query, orderBy, limit, onSnapshot
+    } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+
+    var firebaseConfig = {
+      apiKey: "AIzaSyAbTyUJRzE9DuTmvrKUdiBycK1sVQE6zZY",
+      authDomain: "casamentolarissa-e77a7.firebaseapp.com",
+      projectId: "casamentolarissa-e77a7",
+      storageBucket: "casamentolarissa-e77a7.firebasestorage.app",
+      messagingSenderId: "757055269741",
+      appId: "1:757055269741:web:046a33bf49283c88eb8864"
+    };
+
+    (function () {
+      var form = document.getElementById('mural-form');
+      var lista = document.getElementById('mural-lista');
+      var status = document.getElementById('mural-status');
+      if (!form || !lista) return;
+
+      if (firebaseConfig.apiKey === "COLE_AQUI") {
+        status.textContent = 'Mural ainda não configurado.';
+        lista.innerHTML = '<p class="mural-vazio">O mural entra no ar assim que o banco de dados for configurado.</p>';
+        return;
+      }
+
+      var app = initializeApp(firebaseConfig);
+      var db = getFirestore(app);
+      var mensagensRef = collection(db, 'mural');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var nome = form.nome.value.trim();
+        var texto = form.mensagem.value.trim();
+        if (form.site.value) return; // honeypot: bots costumam preencher campos escondidos
+        if (!nome || !texto) return;
+
+        status.textContent = 'Enviando...';
+        addDoc(mensagensRef, {
+          nome: nome.slice(0, 60),
+          texto: texto.slice(0, 500),
+          criadoEm: serverTimestamp()
+        }).then(function () {
+          form.reset();
+          status.textContent = 'Mensagem enviada! Obrigado. 💛';
+        }).catch(function () {
+          status.textContent = 'Não deu pra enviar agora, tenta de novo em instantes.';
+        });
+      });
+
+      var q = query(mensagensRef, orderBy('criadoEm', 'desc'), limit(50));
+      onSnapshot(q, function (snap) {
+        if (snap.empty) {
+          lista.innerHTML = '<p class="mural-vazio">Seja a primeira pessoa a deixar uma mensagem!</p>';
+          return;
+        }
+        lista.innerHTML = '';
+        snap.forEach(function (doc) {
+          var d = doc.data();
+          var item = document.createElement('div');
+          item.className = 'mural-item';
+
+          var nomeEl = document.createElement('div');
+          nomeEl.className = 'mural-nome';
+          nomeEl.textContent = d.nome || 'Anônimo';
+
+          var textoEl = document.createElement('div');
+          textoEl.className = 'mural-texto';
+          textoEl.textContent = d.texto || '';
+
+          item.appendChild(nomeEl);
+          item.appendChild(textoEl);
+          lista.appendChild(item);
+        });
+      }, function () {
+        lista.innerHTML = '<p class="mural-vazio">Não deu pra carregar as mensagens agora.</p>';
       });
     })();
   </script>

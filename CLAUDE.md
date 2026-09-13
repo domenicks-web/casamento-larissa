@@ -10,6 +10,15 @@ vai ao ar, fica 1 ano e morre. Laravel/Inertia/Vue/Next estão explicitamente
 descartados. Se uma tarefa parecer exigir servidor, procure a solução estática
 antes (link de WhatsApp, Google Forms, QR de PIX, iframe do Google Maps).
 
+**Única exceção aberta, a pedido da Larissa:** o Mural de mensagens (seção
+`#mural`) precisa guardar as mensagens de quem visita o site, o que é
+impossível de forma 100% estática. Para isso usamos o **Firestore** (Firebase)
+direto do navegador — sem servidor próprio, sem build, só um `<script
+type="module">` chamando o SDK via CDN. Ver detalhes em "Mural de mensagens
+(Firestore)" mais abaixo. Não introduza outro backend/banco de dados sem
+perguntar; se precisar de mais uma feature parecida, reaproveite esse mesmo
+projeto Firebase.
+
 ## Stack
 
 | Camada | Escolha |
@@ -29,8 +38,9 @@ Não migre por conta própria — pergunte antes.
 
 ```
 /
-├── index.html                 # página única com âncoras (#quando, #historia, #onde, #galeria, #beleza, #presentes)
+├── index.html                 # página única com âncoras (#quando, #historia, #onde, #galeria, #beleza, #presentes, #mural)
 ├── guia-de-beleza.html        # guia de salões/maquiadoras para madrinhas e convidadas
+├── guia-de-hospedagem.html    # guia de hotéis em Rio Preto para quem vem de fora
 ├── fotos/
 │   ├── porsol.jpg             # capa (hero)
 │   ├── flores.jpg
@@ -114,6 +124,62 @@ Domínios "grátis" de verdade (eu.org, no-ip, is-a.dev) não valem a pena aqui:
 aprovação demorada, aparência amadora num convite de casamento, e risco de
 expirar no meio do caminho. Se a ideia é não gastar, fique no `.pages.dev`.
 
+## Mural de mensagens (Firestore)
+
+Seção `#mural` em `index.html`: formulário (nome + mensagem) que grava no
+Firestore e uma lista logo abaixo que mostra as últimas 50 mensagens em tempo
+real, via `onSnapshot`. Tudo em `<script type="module">` no fim do `<body>`,
+importando o SDK modular direto do CDN da Google (`gstatic.com/firebasejs`) —
+sem npm, sem build.
+
+**Falta fazer para o mural funcionar de verdade** (só a Larissa/o dev consegue
+fazer essa parte, exige login numa conta Google):
+
+1. Criar um projeto grátis em https://console.firebase.google.com (plano
+   Spark, sem cartão de crédito).
+2. Ativar o **Firestore** no modo produção.
+3. Em Firestore → Regras, colar:
+
+   ```
+   rules_version = '2';
+   service cloud.firestore {
+     match /databases/{database}/documents {
+       match /mural/{mensagemId} {
+         allow read: if true;
+         allow create: if request.resource.data.keys().hasOnly(['nome', 'texto', 'criadoEm'])
+           && request.resource.data.nome is string && request.resource.data.nome.size() <= 60
+           && request.resource.data.texto is string && request.resource.data.texto.size() <= 500
+           && request.resource.data.criadoEm == request.time;
+         allow update, delete: if false;
+       }
+     }
+   }
+   ```
+
+   Isso permite que qualquer visitante leia e crie mensagens, mas ninguém
+   edita ou apaga mensagem de outra pessoa, e cada documento só pode ter
+   exatamente os campos `nome`, `texto` e `criadoEm` dentro dos tamanhos
+   definidos.
+4. Em Configurações do projeto → Seus apps → adicionar um app Web → copiar o
+   objeto `firebaseConfig` e colar no lugar dos `"COLE_AQUI"` no `<script
+   type="module">` de `index.html`. Esse objeto **não é secreto** — é
+   normal ele ficar visível no código-fonte; quem protege os dados são as
+   regras do passo 3, não o `apiKey`.
+
+**Por que Firestore e não outra coisa:** é gratuito na prática para o volume
+de um mural de casamento (limite diário do plano Spark é bem maior que o
+tráfego esperado), roda 100% do navegador do visitante (nada pra hospedar ou
+manter no ar) e é um produto central da Google — não há sinal de
+descontinuação, e times inteiros de apps de terceiros dependem dele, então a
+chance de sumir ou cair antes do casamento em 08/2027 é muito baixa. O
+principal risco não é o serviço cair, e sim: (a) alguém apagar o projeto
+Firebase sem querer — não apague; (b) spam/abuso no formulário público — o
+honeypot (`input[name="site"]` escondido) e os limites de tamanho nas regras
+cobrem os casos mais comuns, mas não é 100% à prova de bot.
+
+Enquanto o `firebaseConfig` não for preenchido, a seção mostra uma mensagem
+de "mural ainda não configurado" em vez de quebrar.
+
 ## Decisões já tomadas (não reabrir sem perguntar)
 
 - **Sem RSVP no site.** Confirmação de presença é por WhatsApp, fora do site.
@@ -127,13 +193,16 @@ expirar no meio do caminho. Se a ideia é não gastar, fique no `.pages.dev`.
 ## Pendências
 
 - [ ] Confirmar a data: o Save the Date diz 07/08/2027, confirmar com a noiva.
-- [ ] Textos reais de "Nossa história" e "O pedido" (hoje são placeholders).
-- [ ] Endereço da cerimônia e da recepção → substituir os blocos
-      "Local a confirmar" e trocar a caixa tracejada por um iframe do Google
-      Maps (`loading="lazy"`) + botão "Como chegar" apontando para
-      `https://www.google.com/maps/dir/?api=1&destination=<endereço>`.
-- [ ] Guia de beleza: link direto do Instagram da "Bia Maquiadora" (hoje aponta
-      para uma busca) e valores da Priscila Larsen Salon.
+- [ ] Segundo bloco de "Nossa história" ainda é placeholder (o primeiro já foi
+      preenchido, mas por coincidência com o texto do pedido — o texto que
+      faltava contar, "como tudo começou" antes do Chá Bar, ainda não veio).
+- [ ] Endereço da cerimônia → ainda "Local a confirmar" (o da recepção, no
+      Fauze Karam Buffett, já está preenchido com mapa e botão "Como chegar").
+- [ ] Lista de presentes: Larissa avisou (12/09) que só vai definir mais pra
+      frente.
+- [x] Configurar o projeto Firebase do Mural de mensagens (projeto
+      `casamentolarissa-e77a7`, regras já coladas, `firebaseConfig` já no
+      `index.html`).
 - [ ] Otimizar as fotos: as JPEGs vieram do WhatsApp em tamanho original.
       Redimensionar para no máximo 1400px no maior lado e gerar `.webp` com
       `<picture>`. Adicionar `loading="lazy"` em tudo menos na foto do hero.
