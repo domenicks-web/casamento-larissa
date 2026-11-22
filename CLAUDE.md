@@ -195,8 +195,10 @@ de "mural ainda não configurado" em vez de quebrar.
 - [ ] Confirmar a data: o Save the Date diz 07/08/2027, confirmar com a noiva.
 - [x] Segundo bloco de "Nossa história" ("como tudo começou" antes do Chá Bar)
       preenchido (13/09) com o texto final da Larissa/Gui, na seção `#onde`.
-- [ ] Endereço da cerimônia → ainda "Local a confirmar" (o da recepção, no
-      Fauze Karam Buffet, já está preenchido com mapa e botão "Como chegar").
+- [ ] Endereços da cerimônia e da recepção → os dois "Local a confirmar".
+      O da recepção (Fauze Karam Buffet, Av. Tarraf, 2530) foi retirado do
+      site, junto com o mapa e o botão "Como chegar", a pedido da Larissa em
+      22/11/2026. Não citar o buffet em nenhuma página até ela liberar.
 - [ ] Lista de presentes: Larissa avisou (12/09) que só vai definir mais pra
       frente.
 - [x] Configurar o projeto Firebase do Mural de mensagens (projeto
